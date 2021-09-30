@@ -63,4 +63,10 @@ public class MenuItem<E> extends MySinglyLinkedList<E> {
     public String getLabel() {
         return label;
     }
+
+    @Override
+    public Node<E> getHead() {
+        return super.getHead();
+    }
+
 }

@@ -1,348 +1,647 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.Scanner;
+import java.util.stream.Stream;
+
 public class Menu {
-    public static void main(String[] args) {
-        MenuItem<MenuItem<MenuItem<MenuItem<MenuItem<String>>>>>mainMenu = new MenuItem<>("Google Slides");
-        MenuItem<MenuItem<MenuItem<MenuItem<String>>>>mainRibbon = new MenuItem<>("Main Options");
-        mainMenu.insert(mainRibbon);
 
-        MenuItem<MenuItem<MenuItem<String>>>mainFile = new MenuItem<>("File");
-        MenuItem<MenuItem<MenuItem<String>>>mainEdit = new MenuItem<>("Edit");
-        MenuItem<MenuItem<MenuItem<String>>>mainView = new MenuItem<>("View");
-        MenuItem<MenuItem<MenuItem<String>>>mainInsert = new MenuItem<>("Insert");
-        MenuItem<MenuItem<MenuItem<String>>>mainFormat = new MenuItem<>("Format");
-        MenuItem<MenuItem<MenuItem<String>>>mainSlide = new MenuItem<>("Slide");
-        MenuItem<MenuItem<MenuItem<String>>>mainArrange = new MenuItem<>("Arrange");
-        MenuItem<MenuItem<MenuItem<String>>>mainTools= new MenuItem<>("Tools");
-        MenuItem<MenuItem<MenuItem<String>>>mainAddons = new MenuItem<>("Add-ons");
-        MenuItem<MenuItem<MenuItem<String>>>mainHelp = new MenuItem<>("Help");
-        mainRibbon.insert(mainFile);
-        mainRibbon.insert(mainEdit);
-        mainRibbon.insert(mainView);
-        mainRibbon.insert(mainInsert);
-        mainRibbon.insert(mainFormat);
-        mainRibbon.insert(mainSlide);
-        mainRibbon.insert(mainArrange);
-        mainRibbon.insert(mainTools);
-        mainRibbon.insert(mainAddons);
-        mainRibbon.insert(mainHelp);
-        MenuItem<MenuItem<String>>mainFileNew = new MenuItem<>("New");
-        MenuItem<MenuItem<String>>mainFileOpen = new MenuItem<>("Open");
-        MenuItem<MenuItem<String>>mainFileImportS = new MenuItem<>("Import Slides");
-        MenuItem<MenuItem<String>>mainFileMakeC = new MenuItem<>("Make a Copy");
-        MenuItem<MenuItem<String>>mainFileEmail = new MenuItem<>("Email");
-        MenuItem<MenuItem<String>>mainFileDownload = new MenuItem<>("Download");
-        MenuItem<MenuItem<String>>mainFileVersionH = new MenuItem<>("Version History");
-        MenuItem<MenuItem<String>>mainFileRename = new MenuItem<>("Rename");
-        MenuItem<MenuItem<String>>mainFileMove = new MenuItem<>("Move");
-        MenuItem<MenuItem<String>>mainFileAdd = new MenuItem<>("Add shortcut to Drive");
-        MenuItem<MenuItem<String>>mainFileMoveT = new MenuItem<>("Move to trash");
-        MenuItem<MenuItem<String>>mainFilePub = new MenuItem<>("Publish to the web");
-        MenuItem<MenuItem<String>>mainFileDoc = new MenuItem<>("Document details");
-        MenuItem<MenuItem<String>>mainFileLang = new MenuItem<>("Language");
-        MenuItem<MenuItem<String>>mainFilePageS = new MenuItem<>("Page setup");
-        MenuItem<MenuItem<String>>mainFilePrintSP = new MenuItem<>("Print settings and preview");
-        MenuItem<MenuItem<String>>mainFilePrint = new MenuItem<>("Print");
-        mainFile.insert(mainFileNew);
-        mainFile.insert(mainFileOpen);
-        mainFile.insert(mainFileImportS);
-        mainFile.insert(mainFileMakeC);
-        mainFile.insert(mainFileEmail);
-        mainFile.insert(mainFileDownload);
-        mainFile.insert(mainFileVersionH);
-        mainFile.insert(mainFileRename);
-        mainFile.insert(mainFileMove);
-        mainFile.insert(mainFileAdd);
-        mainFile.insert(mainFileMoveT);
-        mainFile.insert(mainFilePub);
-        mainFile.insert(mainFileDoc);
-        mainFile.insert(mainFileLang);
-        mainFile.insert(mainFilePageS);
-        mainFile.insert(mainFilePrintSP);
-        mainFile.insert(mainFilePrint);
-        MenuItem<String>mainFileNewPresent = new MenuItem<>("Presentation");
-        MenuItem<String>mainFileNewFrom = new MenuItem<>("From template");
-        MenuItem<String>mainFileNewDoc = new MenuItem<>("Document");
-        MenuItem<String>mainFileNewSS = new MenuItem<>("Spreadsheet");
-        MenuItem<String>mainFileNewF = new MenuItem<>("Form");
-        MenuItem<String>mainFileNewD = new MenuItem<>("Drawing");
-        mainFileNew.insert(mainFileNewPresent);
-        mainFileNew.insert(mainFileNewFrom);
-        mainFileNew.insert(mainFileNewDoc);
-        mainFileNew.insert(mainFileNewSS);
-        mainFileNew.insert(mainFileNewF);
-        mainFileNew.insert(mainFileNewF);
-        mainFileNew.insert(mainFileNewD);
-        MenuItem<String>mainFileMakeCEP = new MenuItem<>("Entire Presentation");
-        MenuItem<String>mainFileMakeCSS = new MenuItem<>("Selected Slides");
-        mainFileMakeC.insert(mainFileMakeCEP);
-        mainFileMakeC.insert(mainFileMakeCSS);
-        MenuItem<String>mainFileEmailEF = new MenuItem<>("Email this File");
-        mainFileEmail.insert(mainFileEmailEF);
-        MenuItem<String>mainFileDownloadMP = new MenuItem<>("Microsoft Powerpoint");
-        MenuItem<String>mainFileDownloadODP = new MenuItem<>("ODP Document");
-        MenuItem<String>mainFileDownloadPDF = new MenuItem<>("PDF Document");
-        MenuItem<String>mainFileDownloadPT = new MenuItem<>("Plain Text");
-        MenuItem<String>mainFileDownloadJPEG = new MenuItem<>("JPEG image");
-        MenuItem<String>mainFileDownloadPNG = new MenuItem<>("PNG image");
-        MenuItem<String>mainFileDownloadSVG = new MenuItem<>("Scalable Vector Graphics");
-        mainFileDownload.insert(mainFileDownloadMP);
-        mainFileDownload.insert(mainFileDownloadODP);
-        mainFileDownload.insert(mainFileDownloadPDF);
-        mainFileDownload.insert(mainFileDownloadPT);
-        mainFileDownload.insert(mainFileDownloadJPEG);
-        mainFileDownload.insert(mainFileDownloadPNG);
-        mainFileDownload.insert(mainFileDownloadSVG);
-        MenuItem<String>mainFileVersionHNCV = new MenuItem<>("Name current version");
-        MenuItem<String>mainFileVersionHSVH = new MenuItem<>("See version history");
-        mainFileVersionH.insert(mainFileVersionHNCV);
-        mainFileVersionH.insert(mainFileVersionHSVH);
-        MenuItem<MenuItem<String>>mainEditU = new MenuItem<>("Undo");
-        MenuItem<MenuItem<String>>mainEditR = new MenuItem<>("Redo");
-        MenuItem<MenuItem<String>>mainEditC = new MenuItem<>("Cut");
-        MenuItem<MenuItem<String>>mainEditCp = new MenuItem<>("Copy");
-        MenuItem<MenuItem<String>>mainEditP = new MenuItem<>("Paste");
-        MenuItem<MenuItem<String>>mainEditPWF = new MenuItem<>("Paste without formatting");
-        MenuItem<MenuItem<String>>mainEditDel = new MenuItem<>("Delete");
-        MenuItem<MenuItem<String>>mainEditDup = new MenuItem<>("Duplicate");
-        MenuItem<MenuItem<String>>mainEditSA = new MenuItem<>("Select all");
-        MenuItem<MenuItem<String>>mainEditFAR = new MenuItem<>("Find and replace");
-        mainEdit.insert(mainEditU);
-        mainEdit.insert(mainEditR);
-        mainEdit.insert(mainEditC);
-        mainEdit.insert(mainEditCp);
-        mainEdit.insert(mainEditP);
-        mainEdit.insert(mainEditPWF);
-        mainEdit.insert(mainEditDel);
-        mainEdit.insert(mainEditDup);
-        mainEdit.insert(mainEditSA);
-        mainEdit.insert(mainEditFAR);
-        MenuItem<MenuItem<String>>mainViewP = new MenuItem<>("Present");
-        MenuItem<MenuItem<String>>mainViewM = new MenuItem<>("Motion");
-        MenuItem<MenuItem<String>>mainViewTB = new MenuItem<>("Theme builder");
-        MenuItem<MenuItem<String>>mainViewGV = new MenuItem<>("Grid view");
-        MenuItem<MenuItem<String>>mainViewZ = new MenuItem<>("Zoom");
-        MenuItem<MenuItem<String>>mainViewSR = new MenuItem<>("Show ruler");
-        MenuItem<MenuItem<String>>mainViewG = new MenuItem<>("Guides");
-        MenuItem<MenuItem<String>>mainViewST = new MenuItem<>("Snap to");
-        MenuItem<MenuItem<String>>mainViewSTN = new MenuItem<>("Show speaker notes");
-        MenuItem<MenuItem<String>>mainViewFS = new MenuItem<>("Full screen");
-        mainView.insert(mainViewP);
-        mainView.insert(mainViewM);
-        mainView.insert(mainViewTB);
-        mainView.insert(mainViewGV);
-        mainView.insert(mainViewZ);
-        mainView.insert(mainViewSR);
-        mainView.insert(mainViewG);
-        mainView.insert(mainViewSTN);
-        mainView.insert(mainViewFS);
-        MenuItem<String>mainViewZF = new MenuItem<>("Fit");
-        MenuItem<String>mainViewZ50 = new MenuItem<>("50%");
-        MenuItem<String>mainViewZ100 = new MenuItem<>("100%");
-        MenuItem<String>mainViewZ200 = new MenuItem<>("200%");
-        MenuItem<String>mainViewZZI = new MenuItem<>("Zoom in");
-        MenuItem<String>mainViewZZO = new MenuItem<>("Zoom out");
-        mainViewZ.insert(mainViewZF);
-        mainViewZ.insert(mainViewZ50);
-        mainViewZ.insert(mainViewZ100);
-        mainViewZ.insert(mainViewZ200);
-        mainViewZ.insert(mainViewZZI);
-        mainViewZ.insert(mainViewZZO);
-        MenuItem<String>mainViewGSG = new MenuItem<>("Show guides");
-        MenuItem<String>mainViewGAVG = new MenuItem<>("Add vertical guide");
-        MenuItem<String>mainViewGAHG = new MenuItem<>("Add horizontal guide");
-        MenuItem<String>mainViewGEG = new MenuItem<>("Edit guides");
-        MenuItem<String>mainViewGCG = new MenuItem<>("Clear guides");
-        mainViewG.insert(mainViewGSG);
-        mainViewG.insert(mainViewGAVG);
-        mainViewG.insert(mainViewGAHG);
-        mainViewG.insert(mainViewGEG);
-        mainViewG.insert(mainViewGCG);
-        MenuItem<String>mainViewSTGR = new MenuItem<>("Grid");
-        MenuItem<String>mainViewSTGU = new MenuItem<>("Guides");
-        mainViewST.insert(mainViewSTGR);
-        mainViewST.insert(mainViewSTGU);
+    private static String currentString;
+    private static String oldString;
+    private static String copiedString;
+    private static String fileName = "./";
+    private static int slideCounter = 0;
+    private static int fontSize = 12;
+    private static int slideSize = 10;
 
-        MenuItem<MenuItem<String>>mainInsertI = new MenuItem<>("Image");
-        MenuItem<MenuItem<String>>mainInsertTB = new MenuItem<>("Text box");
-        MenuItem<MenuItem<String>>mainInsertA = new MenuItem<>("Audio");
-        MenuItem<MenuItem<String>>mainInsertV = new MenuItem<>("Video");
-        MenuItem<MenuItem<String>>mainInsertS = new MenuItem<>("Shape");
-        MenuItem<MenuItem<String>>mainInsertT = new MenuItem<>("Table");
-        MenuItem<MenuItem<String>>mainInsertC = new MenuItem<>("Chart");
-        MenuItem<MenuItem<String>>mainInsertD = new MenuItem<>("Diagram");
-        MenuItem<MenuItem<String>>mainInsertWA = new MenuItem<>("Word art");
-        MenuItem<MenuItem<String>>mainInsertL = new MenuItem<>("Line");
-        MenuItem<MenuItem<String>>mainInsertSC = new MenuItem<>("Special Characters");
-        MenuItem<MenuItem<String>>mainInsertAN = new MenuItem<>("Animation");
-        MenuItem<MenuItem<String>>mainInsertLK = new MenuItem<>("Link");
-        MenuItem<MenuItem<String>>mainInsertCM = new MenuItem<>("Comment");
-        MenuItem<MenuItem<String>>mainInsertNS = new MenuItem<>("New Slide");
-        MenuItem<MenuItem<String>>mainInsertSN = new MenuItem<>("Slide numbers");
-        MenuItem<MenuItem<String>>mainInsertPH = new MenuItem<>("Placeholder");
-        mainInsert.insert(mainInsertI);
-        mainInsert.insert(mainInsertTB);
-        mainInsert.insert(mainInsertA);
-        mainInsert.insert(mainInsertV);
-        mainInsert.insert(mainInsertS);
-        mainInsert.insert(mainInsertT);
-        mainInsert.insert(mainInsertC);
-        mainInsert.insert(mainInsertD);
-        mainInsert.insert(mainInsertWA);
-        mainInsert.insert(mainInsertL);
-        mainInsert.insert(mainInsertSC);
-        mainInsert.insert(mainInsertAN);
-        mainInsert.insert(mainInsertLK);
-        mainInsert.insert(mainInsertCM);
-        mainInsert.insert(mainInsertNS);
-        mainInsert.insert(mainInsertSN);
-        mainInsert.insert(mainInsertPH);
-        MenuItem<String>mainInsertIUFC = new MenuItem<>("Upload from computer");
-        MenuItem<String>mainInsertISTW = new MenuItem<>("Search the web");
-        MenuItem<String>mainInsertID = new MenuItem<>("Drive");
-        MenuItem<String>mainInsertIP = new MenuItem<>("Photos");
-        MenuItem<String>mainInsertIBU = new MenuItem<>("By URL");
-        MenuItem<String>mainInsertIC = new MenuItem<>("Camera");
-        mainInsertI.insert(mainInsertIUFC);
-        mainInsertI.insert(mainInsertISTW);
-        mainInsertI.insert(mainInsertID);
-        mainInsertI.insert(mainInsertIP);
-        mainInsertI.insert(mainInsertIBU);
-        mainInsertI.insert(mainInsertIC);
-        MenuItem<String>mainInsertSS = new MenuItem<>("Shapes");
-        MenuItem<String>mainInsertSA = new MenuItem<>("Arrows");
-        MenuItem<String>mainInsertSCA = new MenuItem<>("Callouts");
-        MenuItem<String>mainInsertSE = new MenuItem<>("Equation");
-        mainInsertS.insert(mainInsertSS);
-        mainInsertS.insert(mainInsertSA);
-        mainInsertS.insert(mainInsertSCA);
-        mainInsertS.insert(mainInsertSE);
-        MenuItem<String>mainInsertCB = new MenuItem<>("Bar");
-        MenuItem<String>mainInsertCC = new MenuItem<>("Column");
-        MenuItem<String>mainInsertCL = new MenuItem<>("Line");
-        MenuItem<String>mainInsertCP = new MenuItem<>("Pie");
-        mainInsertC.insert(mainInsertCB);
-        mainInsertC.insert(mainInsertCC);
-        mainInsertC.insert(mainInsertCL);
-        mainInsertC.insert(mainInsertCP);
-        MenuItem<String>mainInsertLL = new MenuItem<>("Line");
-        MenuItem<String>mainInsertLA = new MenuItem<>("Arrow");
-        MenuItem<String>mainInsertLEC = new MenuItem<>("Elbow Connector");
-        MenuItem<String>mainInsertLCC = new MenuItem<>("Curved Connector");
-        MenuItem<String>mainInsertLC = new MenuItem<>("Curve");
-        MenuItem<String>mainInsertLP = new MenuItem<>("Polyline");
-        MenuItem<String>mainInsertLS = new MenuItem<>("Scribble");
-        mainInsertL.insert(mainInsertLL);
-        mainInsertL.insert(mainInsertLA);
-        mainInsertL.insert(mainInsertLEC);
-        mainInsertL.insert(mainInsertLCC);
-        mainInsertL.insert(mainInsertLC);
-        mainInsertL.insert(mainInsertLP);
-        mainInsertL.insert(mainInsertLS);
-
-        MenuItem<MenuItem<String>>mainFormatT = new MenuItem<>("Text");
-        MenuItem<MenuItem<String>>mainFormatAaI = new MenuItem<>("Align and indent");
-        MenuItem<MenuItem<String>>mainFormatLPS = new MenuItem<>("Line &  paragraph spacing");
-        MenuItem<MenuItem<String>>mainFormatBN = new MenuItem<>("Bullet and numbering");
-        MenuItem<MenuItem<String>>mainFormatTa = new MenuItem<>("Table");
-        MenuItem<MenuItem<String>>mainFormatCF = new MenuItem<>("Clear formatting");
-        MenuItem<MenuItem<String>>mainFormatBL = new MenuItem<>("Border and lines");
-        MenuItem<MenuItem<String>>mainFormatFO = new MenuItem<>("Format options");
-        MenuItem<MenuItem<String>>mainFormatI = new MenuItem<>("Image");
-        mainFormat.insert(mainFormatT);
-        mainFormat.insert(mainFormatAaI);
-        mainFormat.insert(mainFormatLPS);
-        mainFormat.insert(mainFormatBN);
-        mainFormat.insert(mainFormatTa);
-        mainFormat.insert(mainFormatCF);
-        mainFormat.insert(mainFormatBL);
-        mainFormat.insert(mainFormatFO);
-        mainFormat.insert(mainFormatI);
-
-        MenuItem<MenuItem<String>>mainSlideNS = new MenuItem<>("New slide");
-        MenuItem<MenuItem<String>>mainSlideDS = new MenuItem<>("Duplicate slide");
-        MenuItem<MenuItem<String>>mainSlideDelS = new MenuItem<>("Delete slide");
-        MenuItem<MenuItem<String>>mainSlideSS = new MenuItem<>("Skip slide");
-        MenuItem<MenuItem<String>>mainSlideMS = new MenuItem<>("Move slide");
-        MenuItem<MenuItem<String>>mainSlideCB = new MenuItem<>("Change background");
-        MenuItem<MenuItem<String>>mainSlideAL = new MenuItem<>("Apply layout");
-        MenuItem<MenuItem<String>>mainSlideT = new MenuItem<>("Transition");
-        MenuItem<MenuItem<String>>mainSlideET = new MenuItem<>("Edit theme");
-        MenuItem<MenuItem<String>>mainSlideCT = new MenuItem<>(" Change theme");
-        mainSlide.insert(mainSlideNS);
-        mainSlide.insert(mainSlideDS);
-        mainSlide.insert(mainSlideDelS);
-        mainSlide.insert(mainSlideSS);
-        mainSlide.insert(mainSlideMS);
-        mainSlide.insert(mainSlideCB);
-        mainSlide.insert(mainSlideAL);
-        mainSlide.insert(mainSlideT);
-        mainSlide.insert(mainSlideET);
-        mainSlide.insert(mainSlideCT);
-
-        MenuItem<MenuItem<String>>mainArrangeO = new MenuItem<>("Order");
-        MenuItem<MenuItem<String>>mainArrangeA = new MenuItem<>("Align");
-        MenuItem<MenuItem<String>>mainArrangeD = new MenuItem<>("Distribute");
-        MenuItem<MenuItem<String>>mainArrangeCOP = new MenuItem<>("Centre on page");
-        MenuItem<MenuItem<String>>mainArrangeR = new MenuItem<>("Rotate");
-        MenuItem<MenuItem<String>>mainArrangeG = new MenuItem<>("Group");
-        MenuItem<MenuItem<String>>mainArrangeU = new MenuItem<>("Ungroup");
-        mainArrange.insert(mainArrangeO);
-        mainArrange.insert(mainArrangeA);
-        mainArrange.insert(mainArrangeD);
-        mainArrange.insert(mainArrangeCOP);
-        mainArrange.insert(mainArrangeR);
-        mainArrange.insert(mainArrangeG);
-        mainArrange.insert(mainArrangeU);
-
-        MenuItem<MenuItem<String>>mainToolsSpell = new MenuItem<>("Spelling");
-        MenuItem<MenuItem<String>>mainToolsE = new MenuItem<>("Explore");
-        MenuItem<MenuItem<String>>mainToolsL = new MenuItem<>("Linked objects");
-        MenuItem<MenuItem<String>>mainToolsD = new MenuItem<>("Dictionary");
-        MenuItem<MenuItem<String>>mainToolsQA = new MenuItem<>("Q&A history");
-        MenuItem<MenuItem<String>>mainToolsVTSN = new MenuItem<>("Voice type speaker notes");
-        MenuItem<MenuItem<String>>mainToolsSE = new MenuItem<>("Script editor");
-        MenuItem<MenuItem<String>>mainToolsP = new MenuItem<>("Preference");
-        MenuItem<MenuItem<String>>mainToolsA = new MenuItem<>("Accessibility");
-        mainTools.insert(mainToolsSpell);
-        mainTools.insert(mainToolsE);
-        mainTools.insert(mainToolsL);
-        mainTools.insert(mainToolsD);
-        mainTools.insert(mainToolsQA);
-        mainTools.insert(mainToolsVTSN);
-        mainTools.insert(mainToolsSE);
-        mainTools.insert(mainToolsP);
-        mainTools.insert(mainToolsA);
-        MenuItem<String>mainToolsSpellSC = new MenuItem<>("Spell check");
-        MenuItem<String>mainToolsSpellUE = new MenuItem<>("Underline errors");
-        MenuItem<String>mainToolsSpellPD = new MenuItem<>("Personal dictionary");
-        mainToolsSpell.insert(mainToolsSpellSC);
-        mainToolsSpell.insert(mainToolsSpellUE);
-        mainToolsSpell.insert(mainToolsSpellPD);
-
-
-        MenuItem<MenuItem<String>>mainAddonsDA = new MenuItem<>("Document add-ons");
-        MenuItem<MenuItem<String>>mainAddonsGA = new MenuItem<>("Get add-ons");
-        MenuItem<MenuItem<String>>mainAddonsMA = new MenuItem<>("Manage add-ons");
-        mainAddons.insert(mainAddonsDA);
-        mainAddons.insert(mainAddonsGA);
-        mainAddons.insert(mainAddonsMA);
-
-        MenuItem<MenuItem<String>>mainHelpSH = new MenuItem<>("Slides Help");
-        MenuItem<MenuItem<String>>mainHelpT = new MenuItem<>("Training");
-        MenuItem<MenuItem<String>>mainHelpU = new MenuItem<>("Updates");
-        MenuItem<MenuItem<String>>mainHelpHSI = new MenuItem<>("Help Slides Improve");
-        MenuItem<MenuItem<String>>mainHelpRAC = new MenuItem<>("Report abuse/copyright");
-        MenuItem<MenuItem<String>>mainHelpKS = new MenuItem<>("Keyboard shortcuts");
-        mainHelp.insert(mainHelpSH);
-        mainHelp.insert(mainHelpT);
-        mainHelp.insert(mainHelpU);
-        mainHelp.insert(mainHelpHSI);
-        mainHelp.insert(mainHelpRAC);
-        mainHelp.insert(mainHelpKS);
-
-        /*  TO TEST PROGRAM:
-            mainMenu.insert() to add every ribbon to the main menu
-            mainMenu.navigate()
-         */
+    private static String getInput(String prompt) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print(prompt + ": ");
+        return scanner.nextLine();
     }
 
+    private static void workspace() {
+        currentString = getInput("Input to slide");
+    }
+
+    private static MenuItem<MenuItem<String>>
+    navigateRibbon(MenuItem<MenuItem<MenuItem<String>>> ribbon) {
+        Node<MenuItem<MenuItem<String>>> current = ribbon.getHead();
+        StringBuilder menu = new StringBuilder("[ ");
+        String selection;
+        boolean isInvalid = true;
+
+        System.out.println(ribbon.getLabel());
+        do {
+            menu.append(current.getData().getLabel());
+            if (current.getNext() != null) menu.append(", ");
+            current = current.getNext();
+        } while (current != null);
+        menu.append(", Workspace ]");
+        System.out.println(menu);
+
+        // return the element at the index
+
+        while (true) {
+            selection = getInput("Selection");
+            current = ribbon.getHead();
+            while (current != null) {
+                if (current.getData().getLabel().equalsIgnoreCase(selection)) {
+                    isInvalid = false;
+                    break;
+                } else current = current.getNext();
+            }
+            if (!isInvalid || selection.equalsIgnoreCase("workspace")) break;
+            System.out.println("Invalid Input.");
+        }
+
+        if (selection.equalsIgnoreCase("workspace")) {
+            workspace();
+            return ribbon.getHead().getData();
+        }
+
+        return current.getData();
+    }
+
+    private static MenuItem<String>
+    navigateTabs(MenuItem<MenuItem<String>> tab) {
+        Node<MenuItem<String>> current = tab.getHead();
+        StringBuilder menu = new StringBuilder("[ ");
+        String selection;
+        boolean isInvalid = true;
+
+        System.out.println(tab.getLabel());
+        do {
+            menu.append(current.getData().getLabel());
+            if (current.getNext() != null) menu.append(", ");
+            current = current.getNext();
+        } while (current != null);
+        menu.append(" ]");
+        System.out.println(menu);
+
+        // reset pointer to current (index 0)
+
+        while (true) {
+            selection = getInput("Selection");
+            current = tab.getHead();
+            while (current != null) {
+                if (current.getData().getLabel().equalsIgnoreCase(selection)) {
+                    isInvalid = false;
+                    break;
+                } else current = current.getNext();
+            }
+            if (!isInvalid) break;
+            System.out.println("Invalid Input.");
+        }
+
+        return current.getData();
+    }
+
+    private static String
+    navigateSubmenu(MenuItem<String> submenu) {
+        Node<String> current = submenu.getHead();
+        StringBuilder menu = new StringBuilder("[ ");
+        String selection;
+        boolean isInvalid = true;
+
+        System.out.println(submenu.getLabel());
+        do {
+            menu.append(current.getData());
+            if (current.getNext() != null) menu.append(", ");
+            current = current.getNext();
+        } while (current != null);
+        menu.append(" ]");
+        System.out.println(menu);
+
+        // reset pointer to current (index 0)
+        current = submenu.getHead();
+
+        while (true) {
+            selection = getInput("Selection");
+            current = submenu.getHead();
+            while (current != null) {
+                if (current.getData().equalsIgnoreCase(selection)) {
+                    isInvalid = false;
+                    break;
+                } else current = current.getNext();
+            }
+            if (!isInvalid) break;
+            System.out.println("Invalid Input.");
+        }
+
+        return current.getData();
+    }
+
+    private static void stringHandler(String string) {
+        boolean autosave = true;
+
+        /*
+            TAB FILE
+         */
+        // FILE/QUICK OPERATIONS
+        if (string.equalsIgnoreCase("autosave")) {
+            autosave ^= true;
+            System.out.println("Autosave: " + autosave);
+            return;
+        }
+
+        if (string.equalsIgnoreCase("save")) {
+            try {
+                Files.writeString(Paths.get(fileName), currentString);
+            } catch (IOException e) {
+                System.out.println("I/O Error.");
+            }
+            return;
+        }
+
+        if (string.equalsIgnoreCase("undo")) {
+            currentString = new String(oldString);
+            oldString = "";
+            System.out.println("Unloaded String in buffer.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("redo")) {
+            currentString += ('\n' + currentString);
+            System.out.println(currentString);
+            return;
+        }
+
+        if (string.equalsIgnoreCase("present")) {
+            System.out.println("Presenting Screen");
+            return;
+        }
+
+        // FILE/FILE OPERATIONS
+        if (string.equalsIgnoreCase("new")) {
+            String emptyString = "";
+            String path = "./";
+            path += getInput("File name");
+            try {
+                Files.writeString(Paths.get(path), emptyString);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Creating a new file.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("open")) {
+            String path = "./";
+            path += getInput("File name");
+            try (Stream<String> stream = Files.lines(Paths.get(path))) {
+                stream.forEach(System.out::println);
+            } catch (IOException e) {
+                System.out.println("File not found.");
+            }
+            return;
+        }
+
+        if (string.equalsIgnoreCase("info")) {
+            System.out.println("Microsoft Powerpoint: Menu Modelling");
+            System.out.println("Working file: " + fileName);
+            System.out.println("Operating System: " + System.getProperty("os.name"));
+            System.out.println("Java Environment: " + System.getProperty("java.version"));
+            return;
+        }
+
+        if (string.equalsIgnoreCase("save as")) {
+            String emptyString = "";
+            String path = "./";
+            path += getInput("File name");
+            try {
+                Files.writeString(Paths.get(path), emptyString);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Creating a new file.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("print")) {
+            System.out.println("Printing " + fileName);
+            return;
+        }
+
+        if (string.equalsIgnoreCase("share")) {
+            System.out.println("Sharing " + fileName);
+            return;
+        }
+
+        if (string.equalsIgnoreCase("export")) {
+            System.out.println("Exporting " + fileName + " as .pdf.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("close")) {
+            System.exit(0);
+        }
+
+        // FILE/OTHERS
+        if (string.equalsIgnoreCase("account")) {
+            System.out.println("Microsoft Powerpoint");
+            System.out.println("Product Status: Activated");
+            System.out.println("Licensed to: " + System.getProperty("user.name"));
+            return;
+        }
+
+        if (string.equalsIgnoreCase("feedback")) {
+            String concerns = getInput("Input your concerns: ");
+            try {
+                Files.writeString(Paths.get("./Feedback.txt"), concerns);
+            } catch (IOException e) {
+                System.out.println("I/O Error.");
+            }
+            System.out.println("Response documented.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("options")) {
+            System.out.println("Options are set to read-only.");
+            System.out.println("Contact your domain administrator.");
+            return;
+        }
+
+        /*
+            TAB HOME
+         */
+
+        // HOME/CLIPBOARD
+        if (string.equalsIgnoreCase("paste")) {
+            try {
+                Files.writeString(Paths.get(fileName), copiedString,
+                        StandardOpenOption.APPEND);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Creating a new file.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("copy")) {
+            copiedString = new String(currentString);
+            System.out.println(copiedString + " copied.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("format painter")) {
+            System.out.println("Format painter is disabled.");
+            return;
+        }
+
+        // HOME/SLIDES
+
+        if (string.equalsIgnoreCase("new slide")) {
+            System.out.println("Slides: " + ++slideCounter);
+            return;
+        }
+
+        if (string.equalsIgnoreCase("layout")) {
+            System.out.println("No layouts preconfigured.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("reset")) {
+            System.out.println("Refreshing current state.");
+            System.out.println("Terminating program.");
+            System.exit(0);
+        }
+
+        // HOME/FONT
+        if (string.equalsIgnoreCase("font selector")) {
+            StringBuilder menu = new StringBuilder("[ ");
+            String selection;
+            boolean isInvalid = true;
+            MySinglyLinkedList<String> fonts = new MySinglyLinkedList<>();
+            Node<String> current = fonts.getHead();
+
+            fonts.insert("Arial");
+            fonts.insert("Calibri");
+            fonts.insert("Times New Roman");
+
+            do {
+                menu.append(current.getData());
+                if (current.getNext() != null) menu.append(", ");
+                current = current.getNext();
+            } while (current != null);
+            menu.append(" ]");
+            System.out.println(menu);
+
+            while (true) {
+                selection = getInput("Selection");
+                current = fonts.getHead();
+                while (current != null) {
+                    if (current.getData().equalsIgnoreCase(selection)) {
+                        isInvalid = false;
+                        break;
+                    } else current = current.getNext();
+                }
+                if (!isInvalid) break;
+                System.out.println("Invalid Input.");
+            }
+            System.out.println(current.getData() + " applied to text.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("increase font size")) {
+            System.out.println("Font size: " + ++fontSize);
+            return;
+        }
+
+        if (string.equalsIgnoreCase("decrease font size")) {
+            System.out.println("Font size: " + --fontSize);
+            return;
+        }
+
+        if (string.equalsIgnoreCase("erase formatting")) {
+            System.out.println("Formatting erased for text.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("bold")) {
+            System.out.println("Boldened text.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("italic")) {
+            System.out.println("Italicized text.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("underline")) {
+            System.out.println("Underlined text.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("strikethrough")) {
+            System.out.println("Strikethroughed text.");
+            return;
+        }
+
+        // HOME/PARAGRAPH
+        if (string.equalsIgnoreCase("align left")) {
+            System.out.println("Text aligned left.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("align right")) {
+            System.out.println("Text aligned right.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("justify")) {
+            System.out.println("Text justified.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("indent")) {
+            System.out.println("Text indented.");
+            return;
+        }
+
+        // HOME/EDITING
+        if (string.equalsIgnoreCase("find")) {
+            String key = getInput("Search term");
+            System.out.println("Found: " + currentString.contains(key));
+            return;
+        }
+
+        if (string.equalsIgnoreCase("replace")) {
+            System.out.println("Disabled by administrator.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("select")) {
+            System.out.println("Text selected.");
+            return;
+        }
+
+        /*
+            TAB INSERT
+         */
+
+        if (string.equalsIgnoreCase("table")) {
+            String rows = getInput("Rows: ");
+            String columns = getInput("Columns");
+            System.out.println(rows + "x" + columns + "Table inserted");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("illustration")) {
+            System.out.println("Illustration from clipboard inserted.");
+            return;
+        }
+
+        if (string.equalsIgnoreCase("text")) {
+            System.out.println("Text from clipboard inserted.");
+            return;
+        }
+
+        /*
+            TAB DESIGN
+         */
+
+        // DESIGN/THEMES
+        if (string.equalsIgnoreCase("office theme") ||
+                string.equalsIgnoreCase("facet") ||
+                string.equalsIgnoreCase("gallery") ||
+                string.equalsIgnoreCase("integral")) {
+            System.out.println(string + " applied.");
+            return;
+        }
+
+        // DESIGN/VARIANTS
+        if (string.equalsIgnoreCase("normal") ||
+                string.equalsIgnoreCase("light") ||
+                string.equalsIgnoreCase("dark")) {
+            System.out.println(string + " applied.");
+            return;
+        }
+
+        // DESIGN/CUSTOMIZE
+        if (string.equalsIgnoreCase("slide size")) {
+            System.out.println("Slide size: " + ++slideSize);
+            return;
+        }
+
+        if (string.equalsIgnoreCase("format background")) {
+            System.out.println("Background formatting cleared.");
+            return;
+        }
+
+        System.out.println("String not found.");
+    }
+
+    public static void main(String[] args) {
+        // Holds the main ribbon
+        MenuItem<MenuItem<MenuItem<String>>> ribbon = new MenuItem<>("Main Menu");
+
+        /*
+            Tabs residing in the ribbon have the datatype
+            MenuItem<MenuItem<String>>
+         */
+        MenuItem<MenuItem<String>> file = new MenuItem<>("File");
+        MenuItem<MenuItem<String>> home = new MenuItem<>("Home");
+        MenuItem<MenuItem<String>> insert = new MenuItem<>("Insert");
+        MenuItem<MenuItem<String>> design = new MenuItem<>("Design");
+
+        // MAIN MENU RIBBON
+        ribbon.insert(file);
+        ribbon.insert(home);
+        ribbon.insert(insert);
+        ribbon.insert(design);
+
+        /*
+            Submenus in the ribbon tabs
+            MenuItem<String>
+         */
+
+        // TAB FILE
+        MenuItem<String> quickOperations = new MenuItem<>("Quick Operations");
+        MenuItem<String> fileOperations = new MenuItem<>("File Operations");
+        MenuItem<String> others = new MenuItem<>("Others");
+
+        file.insert(quickOperations);
+        file.insert(fileOperations);
+        file.insert(others);
+
+        // SUBMENU QUICK OPERATIONS
+        quickOperations.insert("Autosave");
+        quickOperations.insert("Save");
+        quickOperations.insert("Undo");
+        quickOperations.insert("Redo");
+        quickOperations.insert("Present");
+
+        // SUBMENU FILE OPERATIONS
+        fileOperations.insert("New");
+        fileOperations.insert("Open");
+        fileOperations.insert("Info");
+        fileOperations.insert("Save");
+        fileOperations.insert("Save as");
+        fileOperations.insert("Print");
+        fileOperations.insert("Share");
+        fileOperations.insert("Export");
+        fileOperations.insert("Close");
+
+        // SUBMENU OTHERS
+        others.insert("Account");
+        others.insert("Feedback");
+        others.insert("Options");
+
+        // TAB HOME
+        MenuItem<String> clipboard = new MenuItem<>("Clipboard");
+        MenuItem<String> slides = new MenuItem<>("Slides");
+        MenuItem<String> font = new MenuItem<>("Font");
+        MenuItem<String> paragraph = new MenuItem<>("Paragraph");
+        MenuItem<String> editing = new MenuItem<>("Editing");
+
+        home.insert(clipboard);
+        home.insert(slides);
+        home.insert(font);
+        home.insert(paragraph);
+        home.insert(editing);
+
+        // SUBMENU CLIPBOARD
+        clipboard.insert("Paste");
+        clipboard.insert("Copy");
+        clipboard.insert("Format Painter");
+
+        // SUBMENU SLIDES
+        slides.insert("New Slide");
+        slides.insert("Layout");
+        slides.insert("Reset");
+
+        // SUBMENU FONT
+        font.insert("Font Selector");
+        font.insert("Increase Font Size");
+        font.insert("Decrease Font Size");
+        font.insert("Erase Formatting");
+        font.insert("Bold");
+        font.insert("Italic");
+        font.insert("Underline");
+        font.insert("Strikethrough");
+
+        // SUBMENU PARAGRAPH
+        paragraph.insert("Align left");
+        paragraph.insert("Align center");
+        paragraph.insert("Align right");
+        paragraph.insert("Justify");
+        paragraph.insert("Indent");
+
+        // SUBMENU EDITING
+        editing.insert("Find");
+        editing.insert("Replace");
+        editing.insert("Select");
+
+        // TAB INSERT
+        MenuItem<String> slidesInsert = new MenuItem<>("Slides");
+        MenuItem<String> tables = new MenuItem<>("Tables");
+        MenuItem<String> illustrations = new MenuItem<>("Illustrations");
+        MenuItem<String> text = new MenuItem<>("Text");
+
+        insert.insert(slidesInsert);
+        insert.insert(tables);
+        insert.insert(illustrations);
+        insert.insert(text);
+
+        // SUBMENU SLIDES
+        slidesInsert.insert("New Slide");
+        slidesInsert.insert("Options");
+
+        // SUBMENU TABLES
+        tables.insert("Table");
+        tables.insert("Options");
+
+        // SUBMENU ILLUSTRATIONS
+        illustrations.insert("Shapes");
+        illustrations.insert("Icons");
+        illustrations.insert("3D models");
+        illustrations.insert("SmartArt");
+        illustrations.insert("Chart");
+
+        // SUBMENU TEXT
+        text.insert("Textbox");
+        text.insert("Header & Footer");
+        text.insert("WordArt");
+        text.insert("Date and Time");
+        text.insert("Object");
+
+        // TAB DESIGN
+        MenuItem<String> themes = new MenuItem<>("Themes");
+        MenuItem<String> variants = new MenuItem<>("Variants");
+        MenuItem<String> customize = new MenuItem<>("Customize");
+
+        design.insert(themes);
+        design.insert(variants);
+        design.insert(customize);
+
+        // SUBMENU THEMES
+        themes.insert("Office Theme");
+        themes.insert("Facet");
+        themes.insert("Gallery");
+        themes.insert("Integral");
+
+        // SUBMENU VARIANTS
+        variants.insert("Normal");
+        variants.insert("Light");
+        variants.insert("Dark");
+
+        // SUBMENU CUSTOMIZE
+        customize.insert("Slide Size");
+        customize.insert("Format Background");
+
+        System.out.println("");
+        fileName += getInput("File name");
+
+        System.out.println("Simulation of: Microsoft Powerpoint\n");
+
+        while (true) {
+            var mainMenu = navigateRibbon(ribbon);
+            var selectedTab = navigateTabs(mainMenu);
+            var selectedSubMenu = navigateSubmenu(selectedTab);
+            stringHandler(selectedSubMenu);
+            if (getInput("Input X to stop operations").equalsIgnoreCase("x")) ;
+        }
+    }
 }
