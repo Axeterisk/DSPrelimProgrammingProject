@@ -14,6 +14,13 @@ public class Menu {
     private static int slideCounter = 0;
     private static int fontSize = 12;
     private static int slideSize = 10;
+    private static final String[] authors = {
+            "ANCHETA, Charles Jr.",
+            "BUSTARDE, Jerome",
+            "CASTRO, Enrico",
+            "GARRIDO, Lupin",
+            "NUDO, Kurt Matthew"
+    };
 
     private static String getInput(String prompt) {
         Scanner scanner = new Scanner(System.in);
@@ -630,18 +637,20 @@ public class Menu {
         // SUBMENU CUSTOMIZE
         customize.insert("Slide Size");
         customize.insert("Format Background");
-
         System.out.println("");
-        fileName += getInput("File name");
-
         System.out.println("Simulation of: Microsoft Powerpoint\n");
+        System.out.println("Written by:");
+        for(String author : authors) {
+            System.out.println(author);
+        }
 
-        while (true) {
+        fileName += getInput("\nFile name");
+
+        do {
             var mainMenu = navigateRibbon(ribbon);
             var selectedTab = navigateTabs(mainMenu);
             var selectedSubMenu = navigateSubmenu(selectedTab);
             stringHandler(selectedSubMenu);
-            if (getInput("Input X to stop operations").equalsIgnoreCase("x")) ;
-        }
+        } while (!getInput("Input X to stop operations").equalsIgnoreCase("x"));
     }
 }
